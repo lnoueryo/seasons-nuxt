@@ -1,93 +1,47 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <div class="text-center">
-        <logo />
-        <vuetify-logo />
-      </div>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation </a
-            >.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord </a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board </a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3" />
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br />
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/inspire"> Continue </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+    <div>
+        <ul class="address text-center mt-4 mb-5">
+            <li>福岡市中央区六本松</li>
+            <li><p>4-9-7ジャパンパル101</p></li>
+            <li class="tel">TEL.092-775-1821</li>
+        </ul>
+        <ul class="introduction text-center mt-4 mb-5">
+            <li class="mt-2">美容室SeaSons(シーズン)はお客様の四季折々のヘアースタイルを常に提供させて頂けたらいいな、と言う思いでオープンしました。</li>
+            <li>誰でも来やすいアットホームな店つくりを心がけておりますので気軽に立ち寄っていただけたら幸いです。</li>
+            <li><span class="name">代表　道下 雅巳</span></li>
+        </ul>
+        <div class="mb-4" style="max-width:450px;margin: auto;">
+            <div class="quick-booking-able-text">予約表</div>
+            <div style="display: flex;justify-content: space-around">
+                <v-btn @click="changeCalendar(0)">男性カットのみ</v-btn>
+                <v-btn @click="duration=1">女性カットのみ</v-btn>
+            </div>
+        </div>
+        <div style="max-width: 1100px;width: 100%;margin:auto;">
+            <calendar :duration="duration"></calendar>
+        </div>
+    </div>
 </template>
-
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
-
 export default {
-  components: {
-    Logo,
-    VuetifyLogo,
-  },
+    data() {
+        return {
+            duration: 0
+        }
+    },
+    methods: {
+        changeCalendar(index){
+            this.duration=index
+        }
+    }
 }
 </script>
+<style scoped>
+    .fade-enter-active, .fade-leave-active {
+        will-change: opacity;
+        transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    }
+    .fade-enter, .fade-leave-to {
+        opacity: 0
+    }
+</style>
